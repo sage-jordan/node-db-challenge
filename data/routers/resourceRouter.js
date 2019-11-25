@@ -15,8 +15,8 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     const body = req.body;
     db.insertR(body)
-        .then(newR => {
-            res.status(200).json({newR})
+        .then(message => {
+            res.status(200).json({message})
         })
         .catch(err => {
             res.status(500).json({err})

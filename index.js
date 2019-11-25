@@ -1,6 +1,7 @@
 // SERVER SETUP
 const express = require('express');
 const server = express();
+server.use(express.json());
 
 // IMPORT ROUTERS
 const PR = require('./data/routers/projectRouter');

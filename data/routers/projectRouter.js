@@ -14,9 +14,10 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     const body = req.body;
+    console.log(req.body);
     db.insertP(body)
-        .then(newProj => {
-            res.status(200).json({newProj})
+        .then(message => {
+            res.status(200).json({ message })
         })
         .catch(err => {
             res.status(500).json({err})

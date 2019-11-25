@@ -24,17 +24,17 @@ function findR(){
 function insertP(project){
     return db('projects')
         .insert(project)
-        .then(ids => ({ id: ids[0] }));
+        .then(() => ({ message: 'successfully added project'}));
 }
 
 function insertT(task){
     return db('tasks')
         .insert(task)
-        .then(ids => ({ id: ids[0] }));
+        .then(() => ({ message: 'successfully added task'}));
 }
 
 function insertR(resource){
     return db('resources')
         .insert(resource)
-        .then(ids => ({ id: ids[0] }));
+        .then(() => ({ message: 'successfully added resource'}));
 }
