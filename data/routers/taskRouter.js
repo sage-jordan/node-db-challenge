@@ -4,8 +4,17 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     db.findT()
-        .then(tasks => {
-            res.status(200).json({tasks});
+        .then(list => {
+            const tasks = list.map(task => {
+                if(task.completed){
+                    task.completed = true;
+                    return list;
+                } else {
+                    task.completed = false;
+                    return list;
+                }
+            })
+            res.status(200).json({ tasks: tasks[0] });
         })
         .catch(err => {
             res.status(500).json({err});
