@@ -15,8 +15,8 @@ function findP() {
 
 function findT(id){
     return db('tasks')
-        .join('project', 'project.id', 'tasks.project_id')
-        .select('id', 'description', 'notes', 'project_id', 'completed')
+        .join('projects', 'projects.id', 'tasks.project_id')
+        .select('tasks.*', 'projects.name')
         .where('tasks.project_id', id)
 }
 

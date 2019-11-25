@@ -28,9 +28,18 @@ router.get('/:id/tasks', (req, res) => {
     const {id} = req.params;
     console.log(id);
     db.findT(id)
-        .then(tasks => {
-            if (tasks.length) {
-                res.json({tasks});
+        .then(list => {
+            if (list.length) {
+                const tasks = list.map(task => {
+                    if(task.completed){
+                        task.completed = true;
+                        return list;
+                    } else {
+                        task.completed = false;
+                        return list;
+                    }
+                })
+                res.json({tasks: tasks[1]});
             } else {
                 res.status(404).json({ message: 'Could not find tasks for given scheme' })
             }
