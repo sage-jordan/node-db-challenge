@@ -6,7 +6,8 @@ module.exports = {
     findR,
     insertP,
     insertT,
-    insertR
+    insertR,
+    remove
 };
 
 function findP() {
@@ -40,4 +41,10 @@ function insertR(resource){
     return db('resources')
         .insert(resource)
         .then(() => ({ message: 'successfully added resource'}));
+}
+
+function remove(id){
+    return db('tasks')
+        .where({ id })
+        .del();
 }

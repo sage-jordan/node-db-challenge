@@ -49,4 +49,17 @@ router.get('/:id/tasks', (req, res) => {
         });
 })
 
+router.delete('/:id/tasks', (req, res) => {
+    const { id } = req.params;
+    db.remove(id)
+        .then(count => {
+            count
+            ? res.status(200).json({ deletedID: id })
+            : res.status(404).json({ message: 'invalid ID' })
+        })
+        .catch(err => {
+            res.status(500).json({ err })
+        })
+})
+
 module.exports = router;
